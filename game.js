@@ -13,7 +13,7 @@ let pickUp = treasure[Math.floor(Math.random()*treasure.length)];
 
 function game(){
     const attackPower = Math.floor(Math.random() * (5 - 4 + 3) + 5);
-    const monsters = monsters[Math.floor(Math.random() * monsters.length)];
+    const monster = monsters[Math.floor(Math.random() * monsters.length)];
     let monstersHealth = 40;
     const monstersPower = Math.floor(Math.random() * (5 - 3 + 2) + 5);
 
@@ -27,8 +27,8 @@ function game(){
         let key = Math.random();
         if (key <= .3){
             console.log('Walking');
-        } else if (key >= .3){
-            console.log(monsters + ' apeared.');
+        } else if (key > .3){
+            console.log(monster + ' apeared.');
 
             while(monstersHealth > 0 && userHealth > 0){
 
@@ -38,7 +38,7 @@ function game(){
                     case 'r':
                         const run = Math.random();
                         if(run < .5){
-                            console.log('Before you can run ' + monsters + 'attack you: ' + monstersPower)
+                            console.log('Before you can run ' + monster + 'attack you: ' + monstersPower)
                         }else {
                             console.log('You run away.');
                             break;
@@ -46,19 +46,19 @@ function game(){
 
                     case 'a':
                         monstersHealth -= attackPower;
-                        console.log('You attacked ' + monsters + ' with ' + attackPower + ' attack power' );
+                        console.log('You attacked ' + monster + ' with ' + attackPower + ' attack power' );
                         
                         userHealth -= monstersPower;
                         console.log('Monster just attacked you with: ' + monstersPower + ' attack power');
 
                         if (monstersHealth <= 0){
-                            console.log('You defeated ' + monsters + '.\n' + monsters + ' left: ' + pickUp);
+                            console.log('You defeated ' + monster + '.\n' + monster + ' left: ' + pickUp);
                             let loot = Math.random();
                             if (loot <= .3){
                                 prize.push(pickUp);
                             }
                         } else if(userHealth <= 0){
-                            console.log(monsters + ' has killed you. You have failed. ');
+                            console.log(monster + ' has killed you. You have failed. ');
                         }
                 }
             }
